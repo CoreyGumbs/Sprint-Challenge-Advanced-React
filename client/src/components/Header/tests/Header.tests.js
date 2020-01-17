@@ -4,5 +4,5 @@ import Header from './Header';
 
 test('Header component renders', () => {
     const {getByTestId} = render(<Header />);
-    getByText(/header/i);
+    getByTestId(/header/i);
 })
