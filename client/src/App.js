@@ -7,7 +7,8 @@ class App extends React.Component{
   constructor(){
     super();
     this.state = {
-      data: []
+      data: [],
+      noPlayer: false
     }
   }
 
@@ -19,13 +20,23 @@ class App extends React.Component{
     .catch(err => console.log(err));
   }
 
-  render(){
+  handlePlayerName = (name) =>{
     const {data} = this.state;
+    const playerNames = data.filter(player => player.name.search(name) !== -1);
+    console.log(playerNames);
+    playerNames.length === 0 ? this.setState({noPlayer: true}) : this.setState({data: playerNames});
+    
+  }
+
+  render(){
+    const {data, noPlayer} = this.state;
+    console.log(noPlayer);
+   
     //
     return(
       <div>
-        <Header />
-        <Players data={data} />
+        <Header handlePlayerName={this.handlePlayerName}/>
+        <Players data={data} noPlayer={noPlayer} />
       </div>
     )
   }
