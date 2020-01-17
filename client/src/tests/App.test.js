@@ -5,8 +5,8 @@ import Header from '../components/Header/Header';
 import Players from '../components/Players/Players';
 
 test(' APP renders without crashing', () => {
-   const {container, getByText} =  render(<App/>);
-   getByText('APP');
+   const {getByText} =  render(<App/>);
+   getByText(/ world cup players/i);
 });
 
 test('Header component renders', () => {
@@ -15,8 +15,9 @@ test('Header component renders', () => {
 })
 
 test('Player Component Renders', () =>{
-   const {getByTestId} = render(<Players/>);
-
+   const {getByTestId, getByText} = render(<Players />);  
    getByTestId(/players/i);
+   getByTestId(/player-name/i);
+   getByText(/megan rapinoe/i)
 })
 

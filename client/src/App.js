@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import './css/App.css';
 import Header from './components/Header/Header';
+import Players from './components/Players/Players';
 class App extends React.Component{
   constructor(){
     super();
@@ -19,11 +20,12 @@ class App extends React.Component{
   }
 
   render(){
-    console.log(this.state.data);
+    const {data} = this.state;
+    //
     return(
       <div>
         <Header />
-        APP
+        <Players data={data} />
       </div>
     )
   }
