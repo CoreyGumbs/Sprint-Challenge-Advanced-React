@@ -1,8 +1,15 @@
 import React from 'react';
 import { render } from '@testing-library/react'
 import App from '../App';
+import Header from '../components/Header/';
 
-it('renders without crashing', () => {
-   const container =  render(<App/>);
-   console.log(container);
+test(' APP renders without crashing', () => {
+   const {container, getByText} =  render(<App/>);
+   getByText('APP');
 });
+
+// test('Header component renders', () => {
+//    const {container, getByText} = render(<Header />);
+//    getByText('Header');
+// })
+
