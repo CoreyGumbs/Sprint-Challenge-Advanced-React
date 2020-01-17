@@ -30,9 +30,7 @@ class App extends React.Component{
 
   render(){
     const {data, noPlayer} = this.state;
-    console.log(noPlayer);
    
-    //
     return(
       <div>
         <Header handlePlayerName={this.handlePlayerName}/>

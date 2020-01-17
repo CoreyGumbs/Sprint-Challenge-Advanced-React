@@ -1,4 +1,4 @@
-import React, {setState} from 'react';
+import React from 'react';
 import {useInput} from '../../hooks/Hooks';
 
 const HeaderSearchForm = ({handlePlayerName}) => {

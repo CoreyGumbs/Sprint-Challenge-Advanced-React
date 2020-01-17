@@ -10,6 +10,9 @@ const Header = ({handlePlayerName}) => {
            <div className="search-form-container">
                <HeaderSearchForm handlePlayerName={handlePlayerName} />
            </div>
+           <div className="">
+               <a href="/">Reset</a>
+           </div>
        </div>
     )
 }

@@ -10,7 +10,7 @@ const Player = ({player}) => {
                 {player.country}
             </p>
             <p className="player-searches">
-               No. Of Searches For Player: {player.searches}
+                Player found in {player.searches} searches.
             </p>
         </div>
     )
