@@ -1,26 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
+import './css/App.css';
+import Header from './components/Header/Header';
+import Players from './components/Players/Players';
+class App extends React.Component{
+  constructor(){
+    super();
+    this.state = {
+      data: [],
+      noPlayer: false
+    }
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  componentDidMount(){
+    axios.get('http://localhost:5000/api/players')
+    .then(res => {
+      this.setState({data: res.data});
+    })
+    .catch(err => console.log(err));
+  }
+
+  handlePlayerName = (name) =>{
+    const {data} = this.state;
+    const playerNames = data.filter(player => player.name.search(name) !== -1);
+    console.log(playerNames);
+    playerNames.length === 0 ? this.setState({noPlayer: true}) : this.setState({data: playerNames});
+    
+  }
+
+  render(){
+    const {data, noPlayer} = this.state;
+   
+    return(
+      <div>
+        <Header handlePlayerName={this.handlePlayerName}/>
+        <Players data={data} noPlayer={noPlayer} />
+      </div>
+    )
+  }
 }
 
 export default App;
